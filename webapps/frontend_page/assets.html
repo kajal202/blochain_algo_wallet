@@ -1,0 +1,48 @@
+
+
+
+    
+
+    {% extends 'layout.html' %}
+    {% block content %}
+    <center> 
+    <h1 class="p-3">Assets</h1>
+    <a href="{{ url_for('main_bp.create') }}"><h3>Create an Asset</h3></a>
+        
+        <form  class=" " action="{{ url_for('main_bp.assets') }}" method="post">
+            {{ form.csrf_token }}
+            <!-- {{ form.substring }} -->
+            <div>
+                <input  type="text" class="form-control "  placeholder="fliter list...">
+                <!-- {{ form.submit }} -->
+                <button class=" btn btn-success btn-lg"
+                onclick="form.submit">Search</button>  
+            </div> 
+        </form>
+  
+    <table>
+        </hr>
+        <tr class="p-2">
+            <th>Asset Name</th>
+            <th>Unit Name</th>
+            <th>Total</th>
+            <th>Decimals</th>
+            <th>Frozen</th>
+            <th>URL</th>  
+        </tr>
+        </hr>
+        {% for asset in assets %}
+        <tr>
+            <td>{{ asset.params.name }}</td>
+            <td>{{ asset.params.get('unit-name') }}</td>
+            <td>{{ asset.params.total }}</td>
+            <td>{{ asset.params.decimals }}</td>
+            <td>{{ asset.params.get('default-frozen') }}</td>
+            <td>{{ asset.params.url }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+{% endblock %}
+
+ 

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="shortcut icon">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/nav.css') }}" rel="stylesheet">
+    <title>Wallet</title>
+</head>
+<body>
+{% if current_user.is_authenticated %}
+    <nav class="topnav">
+        <div>
+            <img src="../static/img/favicon.ico"> Algo</img>
+        </div> 
+       
+        <a href="{{ url_for('main_bp.transactions') }}" {% if request.path==url_for('main_bp.nft') %} class="active"{% endif %}>Transactions</a>
+        <a href="{{ url_for('main_bp.assets') }}" {% if request.path==url_for('main_bp.assets') %} class="active"{% endif %}>Assets</a>
+        <a href="{{ url_for('main_bp.index') }}" {% if request.path==url_for('main_bp.index') %} class="active"{% endif %}>Balance</a>   
+        <a href="{{ url_for('main_bp.send') }}" {% if request.path==url_for('main_bp.send') %} class="active"{% endif %}>Transfer</a>
+        <div>
+            <a class="logout" href="{{ url_for('main_bp.logout') }}"> Logout </a>
+        </div>
+    </nav>
+
+{% endif %}
+
+<div class="container">
+    <div class="content">
+        
+        {% block content %} 
+        {% endblock %}
+    </div>
+</div>
+
+</body>
+</html>
