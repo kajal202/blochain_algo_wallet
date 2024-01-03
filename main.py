@@ -12,6 +12,7 @@ from algosdk import account, encoding, future
 # .\requirements.txt
 # py -m pip install py-algorand-sdk<2.0
 
+# find from purestake account
 algod_token = ""
 algod_address = ""
 purestake_token = {"X-Api-key": algod_token}
