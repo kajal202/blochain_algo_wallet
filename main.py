@@ -12,6 +12,11 @@ from algosdk import account, encoding, future
 # .\requirements.txt
 # py -m pip install py-algorand-sdk<2.0
 
+algod_token = ""
+algod_address = ""
+purestake_token = {"X-Api-key": algod_token}
+algod_client = algod.AlgodClient(algod_token, algod_address, headers=purestake_token)
+
 
 class FungToken:
     def __init__(self):
